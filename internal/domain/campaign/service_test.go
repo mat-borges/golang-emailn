@@ -20,9 +20,9 @@ func (r *repositoryMock) Save(campaign *Campaign) error {
 	return args.Error(0)
 }
 
-func (r *repositoryMock) GetAll() []Campaign {
+func (r *repositoryMock) GetAll() ([]Campaign, error) {
 	args := r.Called()
-	return args.Get(0).([]Campaign)
+	return args.Get(0).([]Campaign), args.Error(1)
 }
 
 var (
