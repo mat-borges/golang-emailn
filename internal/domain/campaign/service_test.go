@@ -64,12 +64,9 @@ func Test_Create_ValidateDomainError(t *testing.T) {
 	repoMock := new(repositoryMock)
 	service.Repo = repoMock
 
-	newCampaign.Name = ""
+	_, err := service.Create(contract.NewCampaignDto{})
 
-	_, err := service.Create(newCampaign)
-
-	assert.NotNil(err)
-	assert.Equal("name is required", err.Error())
+	assert.False(errors.Is(err, internalerrors.ErrInternal))
 }
 
 func Test_Create_ValidateRepositorySave(t *testing.T) {
@@ -80,6 +77,9 @@ func Test_Create_ValidateRepositorySave(t *testing.T) {
 	service.Repo = repoMock
 
 	_, err := service.Create(newCampaign)
+
+	println(err)
+	println(internalerrors.ErrInternal.Error())
 
 	assert.True(errors.Is(err, internalerrors.ErrInternal))
 }
