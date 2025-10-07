@@ -31,7 +31,7 @@ var (
 		Content:  "This is a new campaign",
 		Emails: []string{"contact1@example.com", "contact2@example.com"},
 	}
-	service = Service{}
+	service = ServiceImp{}
 )
 
 func Test_Create_Campaign(t *testing.T) {
