@@ -4,7 +4,7 @@ import (
 	"net/http"
 )
 
-func (h Handler) CampaignGet(w http.ResponseWriter, r *http.Request) (interface{}, int, error) {
+func (h Handler) CampaignGetAll(w http.ResponseWriter, r *http.Request) (interface{}, int, error) {
 	campaigns, err := h.CampaignService.Repo.GetAll()
 
 	return campaigns, http.StatusOK, err
